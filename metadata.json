@@ -2,9 +2,11 @@
   "name": "cirrax-coturn",
   "version": "1.0.0",
   "author": "Cirrax GmbH",
-  "summary": "",
+  "summary": "configure coturn STUN/TUN server",
   "license": "GPL-3.0",
-  "source": "",
+  "source": "https://github.com/cirrax/puppet-coturn",
+  "project_page": "https://github.com/cirrax/puppet-coturn",
+  "issues_url": "https://github.com/cirrax/puppet-coturn/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",

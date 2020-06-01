@@ -1,12 +1,12 @@
 {
   "name": "cirrax-coturn",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Cirrax GmbH",
   "summary": "",
   "license": "GPL-3.0",
   "source": "",
   "dependencies": [
-  {
+    {
       "name": "puppetlabs/stdlib",
       "version_requirement": ">= 3.2.0 < 7.0.0"
     }

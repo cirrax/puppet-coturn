@@ -22,18 +22,20 @@ class coturn::service(
   if $default_file {
     if $enable_turnserver {
       file_line{ 'turnserver default file':
-        ensure => 'present',
-        path   => $default_file,
-        line   => 'TURNSERVER_ENABLED=1',
-        match  => '^TURNSERVER_ENABLED',
-        notify => Service['coturn'],
+        ensure  => 'present',
+        path    => $default_file,
+        line    => 'TURNSERVER_ENABLED=1',
+        match   => '^TURNSERVER_ENABLED',
+        notify  => Service['coturn'],
+        require => Package['coturn'],
       }
     } else {
       file_line{ 'turnserver default file':
-        ensure => 'absent',
-        path   => $default_file,
-        match  => '^TURNSERVER_ENABLED',
-        notify => Service['coturn'],
+        ensure  => 'absent',
+        path    => $default_file,
+        match   => '^TURNSERVER_ENABLED',
+        notify  => Service['coturn'],
+        require => Package['coturn'],
       }
     }
   }

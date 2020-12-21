@@ -67,6 +67,54 @@ enable use-auth-secret
 
 Default value: ``false``
 
+##### `no_stdout_log`
+
+Data type: `Boolean`
+
+Flag to prevent stdout log messages
+
+Default value: ``false``
+
+##### `syslog`
+
+Data type: `Boolean`
+
+redirect all log output into system log (syslog)
+
+Default value: ``false``
+
+##### `simple_log`
+
+Data type: `Boolean`
+
+if true, no log file rollover will be used
+
+Default value: ``false``
+
+##### `verbose`
+
+Data type: `Boolean`
+
+if true, enables verbose mode
+
+Default value: ``false``
+
+##### `extra_verbose`
+
+Data type: `Boolean`
+
+if true, enables Verbose mode (extra verbose)
+
+Default value: ``false``
+
+##### `log_file`
+
+Data type: `Optional[String]`
+
+Option to set the log file path
+
+Default value: ``undef``
+
 ##### `static_auth_secret`
 
 Data type: `Optional[String]`

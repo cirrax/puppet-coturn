@@ -151,13 +151,21 @@
 	
 # Uncomment to run TURN server in 'normal' 'moderate' verbose mode.
 # By default the verbose mode is off.
+<% if @verbose -%>
+verbose
+<% else -%>
 #verbose
+<% end -%>
 	
 # Uncomment to run TURN server in 'extra' verbose mode.
 # This mode is very annoying and produces lots of output.
 # Not recommended under any normal circumstances.
 #	
+<% if @extra_verbose -%>
+Verbose
+<% else -%>
 #Verbose
+<% end -%>
 
 # Uncomment to use fingerprints in the TURN messages.
 # By default the fingerprints are off.
@@ -468,7 +476,11 @@ realm=<%= @realm %>
 # the configured log file. With this option everything will be 
 # going to the configured log only (unless the log file itself is stdout).
 #
-#no-stdout-log
+<% if @no_stdout_log -%>
+no-stdout-log
+<% else -%>
+# no-stdout-log
+<% end -%>
 
 # Option to set the log file name.
 # By default, the turnserver tries to open a log file in 
@@ -481,17 +493,29 @@ realm=<%= @realm %>
 # In the runtime, the logfile can be reset with the SIGHUP signal 
 # to the turnserver process.
 #
+<% if @log_file -%>
+log-file=<%= @log_file %>
+<% else -%>
 #log-file=/var/tmp/turn.log
+<% end -%>
 
 # Option to redirect all log output into system log (syslog).
 #
+<% if @syslog -%>
+syslog
+<% else -%>
 #syslog
+<% end -%>
 
 # This flag means that no log file rollover will be used, and the log file
 # name will be constructed as-is, without PID and date appendage.
 # This option can be used, for example, together with the logrotate tool.
 #
+<% if @simple_log -%>
+simple-log
+<% else -%>
 #simple-log
+<% end -%>
 
 # Option to set the "redirection" mode. The value of this option
 # will be the address of the alternate server for UDP & TCP service in form of 

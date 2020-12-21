@@ -10,6 +10,12 @@
 # @param service_enable
 #   Whether the service should be enabled.
 #   Defaults to true
+# @param enable_turnserver
+#   do we enable coturn in the default_file ?
+#   set to false to disable.
+# @param default_file
+#   use a file in /etc/default to enable server.
+#   this is the filename with path.
 #
 class coturn::service(
   String           $service_name      = 'coturn',

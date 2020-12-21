@@ -36,6 +36,7 @@ class coturn (
     ensure => 'installed',
     name   => $package_name,
     before => File[$config_file],
+    tag    => 'coturn-packages',
   }
 
   file{ $config_file:

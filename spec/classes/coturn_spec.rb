@@ -27,6 +27,7 @@ describe 'coturn' do
       is_expected.to contain_package('coturn')
         .with_ensure('installed')
         .with_name(params[:package_name])
+        .with_tag('coturn-packages')
     }
   end
 

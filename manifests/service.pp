@@ -16,6 +16,10 @@
 # @param default_file
 #   use a file in /etc/default to enable server.
 #   this is the filename with path.
+# @param daemon_args
+#   if default_file is set, this parameter can be
+#   used to set the startup options (DAEMON_ARGS) there.
+#   if set to 'absent', the option will be deleted.
 #
 class coturn::service(
   String           $service_name      = 'coturn',
@@ -23,6 +27,7 @@ class coturn::service(
   Boolean          $service_enable    = true,
   Boolean          $enable_turnserver = true,
   Optional[String] $default_file      = undef,
+  Optional[String] $daemon_args       = undef,
 ) {
 
   Package <| tag == 'coturn-packages' |> -> File_line <| tag == 'coturn::service' |> ~> Service['coturn']
@@ -39,9 +44,29 @@ class coturn::service(
       }
     } else {
       file_line{ 'turnserver default file':
-        ensure => 'absent',
+        ensure            => 'absent',
+        path              => $default_file,
+        match             => '^TURNSERVER_ENABLED',
+        match_for_absence => true,
+        tag               => 'coturn::service',
+      }
+    }
+
+    if $daemon_args == 'absent' {
+      file_line{ 'turnserver default file, damonargs':
+        ensure            => 'absent',
+        path              => $default_file,
+        match             => '^DAEMON_ARGS',
+        match_for_absence => true,
+        tag               => 'coturn::service',
+      }
+    }
+    elsif $daemon_args {
+      file_line{ 'turnserver default file, damonargs':
+        ensure => 'present',
         path   => $default_file,
-        match  => '^TURNSERVER_ENABLED',
+        match  => '^DAEMON_ARGS',
+        line   => "DAEMON_ARGS=\"${daemon_args}\"",
         tag    => 'coturn::service',
       }
     }

@@ -7,7 +7,7 @@
 ### Classes
 
 * [`coturn`](#coturn): main configuration class for coturn
-* [`coturn::service`](#coturnservice): Installs services coturn
+* [`coturn::service`](#coturn--service): Installs services coturn
 
 ## Classes
 
@@ -19,22 +19,22 @@ Main class to configure coturn
 
 The following parameters are available in the `coturn` class:
 
-* [`config_file`](#config_file)
-* [`mode`](#mode)
-* [`owner`](#owner)
-* [`group`](#group)
-* [`package_name`](#package_name)
-* [`use_auth_secret`](#use_auth_secret)
-* [`no_stdout_log`](#no_stdout_log)
-* [`syslog`](#syslog)
-* [`simple_log`](#simple_log)
-* [`verbose`](#verbose)
-* [`extra_verbose`](#extra_verbose)
-* [`log_file`](#log_file)
-* [`static_auth_secret`](#static_auth_secret)
-* [`realm`](#realm)
+* [`config_file`](#-coturn--config_file)
+* [`mode`](#-coturn--mode)
+* [`owner`](#-coturn--owner)
+* [`group`](#-coturn--group)
+* [`package_name`](#-coturn--package_name)
+* [`use_auth_secret`](#-coturn--use_auth_secret)
+* [`no_stdout_log`](#-coturn--no_stdout_log)
+* [`syslog`](#-coturn--syslog)
+* [`simple_log`](#-coturn--simple_log)
+* [`verbose`](#-coturn--verbose)
+* [`extra_verbose`](#-coturn--extra_verbose)
+* [`log_file`](#-coturn--log_file)
+* [`static_auth_secret`](#-coturn--static_auth_secret)
+* [`realm`](#-coturn--realm)
 
-##### <a name="config_file"></a>`config_file`
+##### <a name="-coturn--config_file"></a>`config_file`
 
 Data type: `String`
 
@@ -42,7 +42,7 @@ the coturn configuration file
 
 Default value: `'/etc/turnserver.conf'`
 
-##### <a name="mode"></a>`mode`
+##### <a name="-coturn--mode"></a>`mode`
 
 Data type: `String`
 
@@ -50,7 +50,7 @@ mode to use for coturn config file
 
 Default value: `'0644'`
 
-##### <a name="owner"></a>`owner`
+##### <a name="-coturn--owner"></a>`owner`
 
 Data type: `String`
 
@@ -58,7 +58,7 @@ owner of coturn config file
 
 Default value: `'root'`
 
-##### <a name="group"></a>`group`
+##### <a name="-coturn--group"></a>`group`
 
 Data type: `String`
 
@@ -66,7 +66,7 @@ group of the coturn config file
 
 Default value: `'root'`
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-coturn--package_name"></a>`package_name`
 
 Data type: `String`
 
@@ -74,79 +74,79 @@ package to install
 
 Default value: `'coturn'`
 
-##### <a name="use_auth_secret"></a>`use_auth_secret`
+##### <a name="-coturn--use_auth_secret"></a>`use_auth_secret`
 
 Data type: `Boolean`
 
 enable use-auth-secret
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="no_stdout_log"></a>`no_stdout_log`
+##### <a name="-coturn--no_stdout_log"></a>`no_stdout_log`
 
 Data type: `Boolean`
 
 Flag to prevent stdout log messages
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="syslog"></a>`syslog`
+##### <a name="-coturn--syslog"></a>`syslog`
 
 Data type: `Boolean`
 
 redirect all log output into system log (syslog)
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="simple_log"></a>`simple_log`
+##### <a name="-coturn--simple_log"></a>`simple_log`
 
 Data type: `Boolean`
 
 if true, no log file rollover will be used
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="verbose"></a>`verbose`
+##### <a name="-coturn--verbose"></a>`verbose`
 
 Data type: `Boolean`
 
 if true, enables verbose mode
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="extra_verbose"></a>`extra_verbose`
+##### <a name="-coturn--extra_verbose"></a>`extra_verbose`
 
 Data type: `Boolean`
 
 if true, enables Verbose mode (extra verbose)
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="log_file"></a>`log_file`
+##### <a name="-coturn--log_file"></a>`log_file`
 
 Data type: `Optional[String]`
 
 Option to set the log file path
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="static_auth_secret"></a>`static_auth_secret`
+##### <a name="-coturn--static_auth_secret"></a>`static_auth_secret`
 
 Data type: `Optional[String]`
 
 'Static' authentication secret value
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="realm"></a>`realm`
+##### <a name="-coturn--realm"></a>`realm`
 
 Data type: `Optional[String]`
 
 the default realm to be used
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="coturnservice"></a>`coturn::service`
+### <a name="coturn--service"></a>`coturn::service`
 
 coturn::service
 
@@ -154,14 +154,14 @@ coturn::service
 
 The following parameters are available in the `coturn::service` class:
 
-* [`service_name`](#service_name)
-* [`service_ensure`](#service_ensure)
-* [`service_enable`](#service_enable)
-* [`enable_turnserver`](#enable_turnserver)
-* [`default_file`](#default_file)
-* [`daemon_args`](#daemon_args)
+* [`service_name`](#-coturn--service--service_name)
+* [`service_ensure`](#-coturn--service--service_ensure)
+* [`service_enable`](#-coturn--service--service_enable)
+* [`enable_turnserver`](#-coturn--service--enable_turnserver)
+* [`default_file`](#-coturn--service--default_file)
+* [`daemon_args`](#-coturn--service--daemon_args)
 
-##### <a name="service_name"></a>`service_name`
+##### <a name="-coturn--service--service_name"></a>`service_name`
 
 Data type: `String`
 
@@ -169,7 +169,7 @@ Service name for coturn.
 
 Default value: `'coturn'`
 
-##### <a name="service_ensure"></a>`service_ensure`
+##### <a name="-coturn--service--service_ensure"></a>`service_ensure`
 
 Data type: `String`
 
@@ -178,34 +178,34 @@ Defaults to 'running'
 
 Default value: `'running'`
 
-##### <a name="service_enable"></a>`service_enable`
+##### <a name="-coturn--service--service_enable"></a>`service_enable`
 
 Data type: `Boolean`
 
 Whether the service should be enabled.
 Defaults to true
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="enable_turnserver"></a>`enable_turnserver`
+##### <a name="-coturn--service--enable_turnserver"></a>`enable_turnserver`
 
 Data type: `Boolean`
 
 do we enable coturn in the default_file ?
 set to false to disable.
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="default_file"></a>`default_file`
+##### <a name="-coturn--service--default_file"></a>`default_file`
 
 Data type: `Optional[String]`
 
 use a file in /etc/default to enable server.
 this is the filename with path.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="daemon_args"></a>`daemon_args`
+##### <a name="-coturn--service--daemon_args"></a>`daemon_args`
 
 Data type: `Optional[String]`
 
@@ -213,5 +213,5 @@ if default_file is set, this parameter can be
 used to set the startup options (DAEMON_ARGS) there.
 if set to 'absent', the option will be deleted.
 
-Default value: ``undef``
+Default value: `undef`
 

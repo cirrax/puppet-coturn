@@ -19,6 +19,12 @@ describe 'coturn::service' do
         .with_name(params[:service_name])
         .with_enable(params[:service_enable])
     }
+
+    it {
+      is_expected.to contain_file_line('turnserver default file')
+        .with_match('^TURNSERVER_ENABLED')
+        .with_tag('coturn::service')
+    }
   end
 
   on_supported_os.each do |os, os_facts|

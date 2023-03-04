@@ -1,6 +1,6 @@
 {
   "name": "cirrax-coturn",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Cirrax GmbH",
   "summary": "configure coturn STUN/TUN server",
   "license": "GPL-3.0",

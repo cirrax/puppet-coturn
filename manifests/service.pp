@@ -21,7 +21,7 @@
 #   used to set the startup options (DAEMON_ARGS) there.
 #   if set to 'absent', the option will be deleted.
 #
-class coturn::service(
+class coturn::service (
   String           $service_name      = 'coturn',
   String           $service_ensure    = 'running',
   Boolean          $service_enable    = true,
@@ -29,13 +29,11 @@ class coturn::service(
   Optional[String] $default_file      = undef,
   Optional[String] $daemon_args       = undef,
 ) {
-
   Package <| tag == 'coturn-packages' |> -> File_line <| tag == 'coturn::service' |> ~> Service['coturn']
-
 
   if $default_file {
     if $enable_turnserver {
-      file_line{ 'turnserver default file':
+      file_line { 'turnserver default file':
         ensure => 'present',
         path   => $default_file,
         line   => 'TURNSERVER_ENABLED=1',
@@ -43,7 +41,7 @@ class coturn::service(
         tag    => 'coturn::service',
       }
     } else {
-      file_line{ 'turnserver default file':
+      file_line { 'turnserver default file':
         ensure            => 'absent',
         path              => $default_file,
         match             => '^TURNSERVER_ENABLED',
@@ -53,7 +51,7 @@ class coturn::service(
     }
 
     if $daemon_args == 'absent' {
-      file_line{ 'turnserver default file, damonargs':
+      file_line { 'turnserver default file, damonargs':
         ensure            => 'absent',
         path              => $default_file,
         match             => '^DAEMON_ARGS',
@@ -62,7 +60,7 @@ class coturn::service(
       }
     }
     elsif $daemon_args {
-      file_line{ 'turnserver default file, damonargs':
+      file_line { 'turnserver default file, damonargs':
         ensure => 'present',
         path   => $default_file,
         match  => '^DAEMON_ARGS',
@@ -72,7 +70,7 @@ class coturn::service(
     }
   }
 
-  service {'coturn':
+  service { 'coturn':
     ensure => $service_ensure,
     name   => $service_name,
     enable => $service_enable,

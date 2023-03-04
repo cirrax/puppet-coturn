@@ -47,17 +47,16 @@ class coturn (
   Optional[String] $static_auth_secret = undef,
   Optional[String] $realm              = undef,
 ) {
-
   include coturn::service
 
-  package{'coturn':
+  package { 'coturn':
     ensure => 'installed',
     name   => $package_name,
     before => File[$config_file],
     tag    => 'coturn-packages',
   }
 
-  file{ $config_file:
+  file { $config_file:
     mode    => $mode,
     owner   => $owner,
     group   => $group,

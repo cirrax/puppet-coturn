@@ -10,12 +10,18 @@
 # NOT RECOMMENDED.
 #
 #listening-device=eth0
+<% if @listening_device -%>
+listening-device=<%= @listening_device %>
+<% end -%>
 
 # TURN listener port for UDP and TCP (Default: 3478).
 # Note: actually, TLS & DTLS sessions can connect to the
 # "plain" TCP & UDP port(s), too - if allowed by configuration.
 #
 #listening-port=3478
+<% if @listening_port -%>
+listening-port=<%= @listening_port %>
+<% end -%>
 
 # TURN listener port for TLS (Default: 5349).
 # Note: actually, "plain" TCP & UDP sessions can connect to the TLS & DTLS
@@ -28,6 +34,9 @@
 # For secure UDP connections, Coturn supports DTLS version 1.
 #
 #tls-listening-port=5349
+<% if @tls_listening_port -%>
+listening-port=<%= @tls_listening_port %>
+<% end -%>
 
 # Alternative listening port for UDP and TCP listeners;
 # default (or zero) value means "listening port plus one".
@@ -39,11 +48,17 @@
 # are listening to that endpoint only for "symmetry".
 #
 #alt-listening-port=0
+<% if @alt_listening_port -%>
+alt-listening-port=<%= @alt_listening_port %>
+<% end -%>
 
 # Alternative listening port for TLS and DTLS protocols.
 # Default (or zero) value means "TLS listening port plus one".
 #
 #alt-tls-listening-port=0
+<% if @alt_tls_listening_port -%>
+alt-tls-listening-port=<%= @alt_tls_listening_port %>
+<% end -%>
 
 # Some network setups will require using a TCP reverse proxy in front
 # of the STUN server. If the proxy port option is set a single listener
@@ -52,6 +67,9 @@
 # (https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)
 #
 #tcp-proxy-port=5555
+<% if @alt_tls_listening_port -%>
+tcp-proxy-port=<%= @tcp_proxy_port %>
+<% end -%>
 
 # Listener IP address of relay server. Multiple listeners can be specified.
 # If no IP(s) specified in the config file or in the command line options,
@@ -60,6 +78,9 @@
 #listening-ip=172.17.19.101
 #listening-ip=10.207.21.238
 #listening-ip=2607:f0d0:1002:51::4
+<% @listening_ip.each do | i | -%>
+listening-ip=<%= i %>
+<% end -%>
 
 # Auxiliary STUN/TURN server listening endpoint.
 # Aux servers have almost full TURN and STUN functionality.
@@ -77,6 +98,9 @@
 #
 #aux-server=172.17.19.110:33478
 #aux-server=[2607:f0d0:1002:51::4]:33478
+<% @aux_server.each do | i | -%>
+aux-server=<%= i %>
+<% end -%>
 
 # (recommended for older Linuxes only)
 # Automatically balance UDP traffic over auxiliary servers (if configured).
@@ -85,11 +109,17 @@
 # functionality.
 #
 #udp-self-balance
+<% if $udp_self_balance -%>
+udp-self-balance
+<% end -%>
 
 # Relay interface device for relay sockets (optional, Linux only).
 # NOT RECOMMENDED.
 #
 #relay-device=eth1
+<% if $relay_device -%>
+relay-device=<%= $relay_device %>
+<% end -%>
 
 # Relay address (the local IP address that will be used to relay the
 # packets to the peer).
@@ -104,6 +134,9 @@
 #
 #relay-ip=172.17.19.105
 #relay-ip=2607:f0d0:1002:51::5
+<% @relay_ip.each do | i | -%>
+relay-ip=<%= i %>
+<% end -%>
 
 # For Amazon EC2 users:
 #
@@ -131,7 +164,9 @@
 #
 #external-ip=60.70.80.91/172.17.19.101
 #external-ip=60.70.80.92/172.17.19.102
-
+<% @external_ip.each do | i | -%>
+external-ip=<%= i %>
+<% end -%>
 
 # Number of the relay threads to handle the established connections
 # (in addition to authentication thread and the listener thread).
@@ -155,7 +190,13 @@
 # (default values are 49152 and 65535)
 #
 #min-port=49152
+<% if @min_port -%>
+min-port=<%= @min_port %>
+<% end -%>
 #max-port=65535
+<% if @max_port -%>
+max-port=<%= @max_port %>
+<% end -%>
 
 # Uncomment to run TURN server in 'normal' 'moderate' verbose mode.
 # By default the verbose mode is off.
@@ -179,11 +220,17 @@ Verbose
 # By default the fingerprints are off.
 #
 #fingerprint
+<% if @fingerprint -%>
+fingerprint
+<% end -%>
 
 # Uncomment to use long-term credential mechanism.
 # By default no credentials mechanism is used (any user allowed).
 #
 #lt-cred-mech
+<% if @lt_cred_mech -%>
+lt-cred-mech
+<% end -%>
 
 # This option is the opposite of lt-cred-mech.
 # (TURN Server with no-auth option allows anonymous access).
@@ -193,6 +240,9 @@ Verbose
 # lt-cred-mech is default.
 #
 #no-auth
+<% if @no_auth -%>
+no-auth
+<% end -%>
 
 # Enable prometheus exporter
 # If enabled the turnserver will expose an endpoint with stats on a prometheus format
@@ -205,6 +255,9 @@ Verbose
 # https://prometheus.io/docs/concepts/data_model/
 #
 #prometheus
+<% if @prometheus -%>
+prometheus
+<% end -%>
 
 # TURN REST API flag.
 # (Time Limited Long Term Credential)
@@ -262,10 +315,16 @@ static-auth-secret=<%= @static_auth_secret %>
 # The default value is the realm name.
 #
 #server-name=blackdow.carleon.gov
+<% if @server_name -%>
+server-name=<%= @server_name %>
+<% end -%>
 
 # Flag that allows oAuth authentication.
 #
 #oauth
+<% if @oauth -%>
+oauth
+<% end -%>
 
 # 'Static' user accounts for the long term credentials mechanism, only.
 # This option cannot be used with TURN REST API.
@@ -293,6 +352,9 @@ static-auth-secret=<%= @static_auth_secret %>
 # Or, equivalently, with open clear password (less secure):
 #user=ninefingers:youhavetoberealistic
 #
+<% @user.each do | i | -%>
+user=<%= i %>
+<% end -%>
 
 # SQLite database file name.
 #
@@ -300,6 +362,9 @@ static-auth-secret=<%= @static_auth_secret %>
 # /var/lib/turn/turndb.
 #
 #userdb=/var/db/turndb
+<% if @userdb -%>
+userdb=<%= @userdb %>
+<% end -%>
 
 # PostgreSQL database connection string in the case that you are using PostgreSQL
 # as the user database.
@@ -311,6 +376,9 @@ static-auth-secret=<%= @static_auth_secret %>
 # for 9.x and newer connection string formats.
 #
 #psql-userdb="host=<host> dbname=<database-name> user=<database-user> password=<database-user-password> connect_timeout=30"
+<% if @psql_userdb -%>
+psql-userdb=<%= @psql_userdb %>
+<% end -%>
 
 # MySQL database connection string in the case that you are using MySQL
 # as the user database.
@@ -325,6 +393,9 @@ static-auth-secret=<%= @static_auth_secret %>
 # Use the string format below (space separated parameters, all optional):
 #
 #mysql-userdb="host=<host> dbname=<database-name> user=<database-user> password=<database-user-password> port=<port> connect_timeout=<seconds> read_timeout=<seconds>"
+<% if @mysql_userdb -%>
+mysql-userdb=<%= @mysql_userdb %>
+<% end -%>
 
 # If you want to use an encrypted password in the MySQL connection string,
 # then set the MySQL password encryption secret key file with this option.
@@ -335,6 +406,9 @@ static-auth-secret=<%= @static_auth_secret %>
 # This is the file path for the aes encrypted secret key used for password encryption.
 #
 #secret-key-file=/path/
+<% if @secret_key_file -%>
+secret-key-file=<%= @secret_key_file %>
+<% end -%>
 
 # MongoDB database connection string in the case that you are using MongoDB
 # as the user database.
@@ -343,6 +417,9 @@ static-auth-secret=<%= @static_auth_secret %>
 # Use the string format described at http://hergert.me/docs/mongo-c-driver/mongoc_uri.html
 #
 #mongo-userdb="mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]"
+<% if @mongo_userdb -%>
+mongo-userdb=<%= @mongo_userdb %>
+<% end -%>
 
 # Redis database connection string in the case that you are using Redis
 # as the user database.
@@ -351,6 +428,9 @@ static-auth-secret=<%= @static_auth_secret %>
 # Use the string format below (space separated parameters, all optional):
 #
 #redis-userdb="ip=<ip-address> dbname=<database-number> password=<database-user-password> port=<port> connect_timeout=<seconds>"
+<% if @redis_userdb -%>
+redis-userdb=<%= @redis_userdb %>
+<% end -%>
 
 # Redis status and statistics database connection string, if used (default - empty, no Redis stats DB used).
 # This database keeps allocations status information, and it can be also used for publishing
@@ -359,6 +439,9 @@ static-auth-secret=<%= @static_auth_secret %>
 # Use the string format below (space separated parameters, all optional):
 #
 #redis-statsdb="ip=<ip-address> dbname=<database-number> password=<database-user-password> port=<port> connect_timeout=<seconds>"
+<% if @redis_statsdb -%>
+redis-statsdb=<%= @redis_statsdb %>
+<% end -%>
 
 # The default realm to be used for the users when no explicit
 # origin/realm relationship is found in the database, or if the TURN
@@ -380,18 +463,27 @@ realm=<%= @realm %>
 # initially used by the session).
 #
 #check-origin-consistency
+<% if @check_origin_consistency -%>
+check-origin-consistency
+<% end -%>
 
 # Per-user allocation quota.
 # default value is 0 (no quota, unlimited number of sessions per user).
 # This option can also be set through the database, for a particular realm.
 #
 #user-quota=0
+<% if @user_quota -%>
+user-quota=<%= @user_quota %>
+<% end -%>
 
 # Total allocation quota.
 # default value is 0 (no quota).
 # This option can also be set through the database, for a particular realm.
 #
 #total-quota=0
+<% if @total_quota -%>
+total-quota=<%= @total_quota %>
+<% end -%>
 
 # Max bytes-per-second bandwidth a TURN session is allowed to handle
 # (input and output network streams are treated separately). Anything above
@@ -400,6 +492,9 @@ realm=<%= @realm %>
 # This option can also be set through the database, for a particular realm.
 #
 #max-bps=0
+<% if @max_bps -%>
+max-bps=<%= @max_bps %>
+<% end -%>
 
 #
 # Maximum server capacity.
@@ -407,36 +502,57 @@ realm=<%= @realm %>
 # for the sessions, combined (input and output network streams are treated separately).
 #
 # bps-capacity=0
+<% if @bps_capacity -%>
+bps-capacity=<%= @bps_capacity %>
+<% end -%>
 
 # Uncomment if no UDP client listener is desired.
 # By default UDP client listener is always started.
 #
 #no-udp
+<% if @no_udp -%>
+no-udp
+<% end -%>
 
 # Uncomment if no TCP client listener is desired.
 # By default TCP client listener is always started.
 #
 #no-tcp
+<% if @no_tcp -%>
+no-tcp
+<% end -%>
 
 # Uncomment if no TLS client listener is desired.
 # By default TLS client listener is always started.
 #
 #no-tls
+<% if @no_tls -%>
+no-tls
+<% end -%>
 
 # Uncomment if no DTLS client listener is desired.
 # By default DTLS client listener is always started.
 #
 #no-dtls
+<% if @no_dtls -%>
+no-dtls
+<% end -%>
 
 # Uncomment if no UDP relay endpoints are allowed.
 # By default UDP relay endpoints are enabled (like in RFC 5766).
 #
 #no-udp-relay
+<% if @no_udp_relay -%>
+no-udp-relay
+<% end -%>
 
 # Uncomment if no TCP relay endpoints are allowed.
 # By default TCP relay endpoints are enabled (like in RFC 6062).
 #
 #no-tcp-relay
+<% if @no_tcp_relay -%>
+no-tcp-relay
+<% end -%>
 
 # Uncomment if extra security is desired,
 # with nonce value having a limited lifetime.
@@ -447,19 +563,27 @@ realm=<%= @realm %>
 # the client will get 438 error and will have to re-authenticate itself.
 #
 #stale-nonce=600
+<% if @stale_nonce -%>
+stale-nonce=<%= @stale_nonce %>
+<% end -%>
 
 # Uncomment if you want to set the maximum allocation
 # time before it has to be refreshed.
 # Default is 3600s.
 #
 #max-allocate-lifetime=3600
-
+<% if @max_allocate_lifetime -%>
+max-allocate-lifetime=<%= @max_allocate_lifetime %>
+<% end -%>
 
 # Uncomment to set the lifetime for the channel.
 # Default value is 600 secs (10 minutes).
 # This value MUST not be changed for production purposes.
 #
 #channel-lifetime=600
+<% if @channel_lifetime -%>
+channel-lifetime=<%= @channel_lifetime %>
+<% end -%>
 
 # Uncomment to set the permission lifetime.
 # Default to 300 secs (5 minutes).
@@ -467,6 +591,9 @@ realm=<%= @realm %>
 # however it can be useful for test purposes.
 #
 #permission-lifetime=300
+<% if @permission_lifetime -%>
+permission-lifetime=<%= @permission_lifetime %>
+<% end -%>
 
 # Certificate file.
 # Use an absolute path or path relative to the
@@ -474,6 +601,9 @@ realm=<%= @realm %>
 # Use PEM file format.
 #
 #cert=/usr/local/etc/turn_server_cert.pem
+<% if @cert -%>
+cert=<%= @cert %>
+<% end -%>
 
 # Private key file.
 # Use an absolute path or path relative to the
@@ -481,16 +611,25 @@ realm=<%= @realm %>
 # Use PEM file format.
 #
 #pkey=/usr/local/etc/turn_server_pkey.pem
+<% if @pkey -%>
+pkey=<%= @pkey %>
+<% end -%>
 
 # Private key file password, if it is in encoded format.
 # This option has no default value.
 #
 #pkey-pwd=...
+<% if @pkey_pwd -%>
+pkey-pwd=<%= @pkey_pwd %>
+<% end -%>
 
 # Allowed OpenSSL cipher list for TLS/DTLS connections.
 # Default value is "DEFAULT".
 #
 #cipher-list="DEFAULT"
+<% if @cipher_list -%>
+cipher-list=<%= @cipher_list %>
+<% end -%>
 
 # CA file in OpenSSL format.
 # Forces TURN server to verify the client SSL certificates.
@@ -499,6 +638,9 @@ realm=<%= @realm %>
 #
 # Example:
 #CA-file=/etc/ssh/id_rsa.cert
+<% if @ca_file -%>
+CA-file=<%= @ca_file %>
+<% end -%>
 
 # Curve name for EC ciphers, if supported by OpenSSL
 # library (TLS and DTLS). The default value is prime256v1,
@@ -507,29 +649,39 @@ realm=<%= @realm %>
 # by this option.
 #
 #ec-curve-name=prime256v1
+<% if @ec_curve_name -%>
+ec-curve-name=<%= @ec_curve_name %>
+<% end -%>
 
 # Use 566 bits predefined DH TLS key. Default size of the key is 2066.
 #
 #dh566
+<% if @dh566 -%>
+dh566
+<% end -%>
 
 # Use 1066 bits predefined DH TLS key. Default size of the key is 2066.
 #
 #dh1066
+<% if @dh1066 -%>
+dh1066
+<% end -%>
 
 # Use custom DH TLS key, stored in PEM format in the file.
 # Flags --dh566 and --dh1066 are ignored when the DH key is taken from a file.
 #
 #dh-file=<DH-PEM-file-name>
+<% if @dh_file -%>
+dh-file=<%= @dh_file %>
+<% end -%>
 
 # Flag to prevent stdout log messages.
 # By default, all log messages go to both stdout and to
 # the configured log file. With this option everything will
 # go to the configured log only (unless the log file itself is stdout).
-#
+# no-stdout-log
 <% if @no_stdout_log -%>
 no-stdout-log
-<% else -%>
-# no-stdout-log
 <% end -%>
 
 # Option to set the log file name.
@@ -542,45 +694,53 @@ no-stdout-log
 # the system log (syslog).
 # In the runtime, the logfile can be reset with the SIGHUP signal
 # to the turnserver process.
-#
+#log-file=/var/tmp/turn.log
 <% if @log_file -%>
 log-file=<%= @log_file %>
-<% else -%>
-#log-file=/var/tmp/turn.log
 <% end -%>
 
 # Option to redirect all log output into system log (syslog).
 #
+#syslog
 <% if @syslog -%>
 syslog
-<% else -%>
-#syslog
 <% end -%>
 
 # Set syslog facility for syslog messages
 # Default values is ''.
 #
 #syslog-facility="LOG_LOCAL1"
+<% if @syslog_facility -%>
+syslog-facility=<%= @syslog_facility %>
+<% end -%>
 
 # This flag means that no log file rollover will be used, and the log file
 # name will be constructed as-is, without PID and date appendage.
 # This option can be used, for example, together with the logrotate tool.
 #
+#simple-log
 <% if @simple_log -%>
 simple-log
-<% else -%>
-#simple-log
 <% end -%>
 
 # Enable full ISO-8601 timestamp in all logs.
 #new-log-timestamp
+<% if @new_log_timestamp -%>
+new-log-timestamp
+<% end -%>
 
 # Set timestamp format (in strftime(1) format). Depends on new-log-timestamp to be enabled.
 #new-log-timestamp-format "%FT%T%z"
+<% if @new_log_timestamp_format -%>
+new-log-timestamp-format=<%= @new_log_timestamp_format %>
+<% end -%>
 
 # Disabled by default binding logging in verbose log mode to avoid DoS attacks.
 # Enable binding logging and UDP endpoint logs in verbose log mode.
 #log-binding
+<% if @log_binding -%>
+log-binding
+<% end -%>
 
 # Option to set the "redirection" mode. The value of this option
 # will be the address of the alternate server for UDP & TCP service in the form of
@@ -610,6 +770,9 @@ simple-log
 #alternate-server=11.22.33.44:56789
 #alternate-server=5.6.7.8
 #alternate-server=[2001:db8:85a3:8d3:1319:8a2e:370:7348]:3478
+<% @alternate_server.each do | i | -%>
+alternate-server=<%= i %>
+<% end -%>
 
 # Option to set alternative server for TLS & DTLS services in form of
 # <ip>:<port>. If the port number is omitted, then the default port
@@ -620,12 +783,18 @@ simple-log
 #tls-alternate-server=1.2.3.4:5678
 #tls-alternate-server=11.22.33.44:56789
 #tls-alternate-server=[2001:db8:85a3:8d3:1319:8a2e:370:7348]:3478
+<% @tls_alternate_server.each do | i | -%>
+tls-alternate-server=<%= i %>
+<% end -%>
 
 # Option to suppress TURN functionality, only STUN requests will be processed.
 # Run as STUN server only, all TURN requests will be ignored.
 # By default, this option is NOT set.
 #
 #stun-only
+<% if @stun_only -%>
+stun-only
+<% end -%>
 
 # Option to hide software version. Enhance security when used in production.
 # Revealing the specific software version of the agent through the
@@ -635,16 +804,25 @@ simple-log
 # configurable option (https://tools.ietf.org/html/rfc5389#section-16.1.2)
 #
 #no-software-attribute
+<% if @no_software_attribution -%>
+no-software-attribute
+<% end -%>
 
 # Option to suppress STUN functionality, only TURN requests will be processed.
 # Run as TURN server only, all STUN requests will be ignored.
 # By default, this option is NOT set.
 #
 #no-stun
+<% if @no_stun -%>
+no-stun
+<% end -%>
 
 # This is the timestamp/username separator symbol (character) in TURN REST API.
 # The default value is ':'.
 # rest-api-separator=:
+<% if @rest_api_separator -%>
+rest-api-separator=<%= @rest_api_separator %>
+<% end -%>
 
 # Flag that can be used to allow peers on the loopback addresses (127.x.x.x and ::1).
 # This is an extra security measure.
@@ -657,16 +835,25 @@ simple-log
 # it is not allowed using it together with empty cli-password.
 #
 #allow-loopback-peers
+<% if @allow_loopback_peers -%>
+allow-loopback-peers
+<% end -%>
 
 # Flag that can be used to disallow peers on well-known broadcast addresses (224.0.0.0 and above, and FFXX:*).
 # This is an extra security measure.
 #
 #no-multicast-peers
+<% if @no_multicast_peers -%>
+no-multicast-peers
+<% end -%>
 
 # Option to set the max time, in seconds, allowed for full allocation establishment.
 # Default is 60 seconds.
 #
 #max-allocate-timeout=60
+<% if @max_allocate_timeout -%>
+mac-allocate-timeout=<%= @max_allocate_timeout %>
+<% end -%>
 
 # Option to allow or ban specific ip addresses or ranges of ip addresses.
 # If an ip address is specified as both allowed and denied, then the ip address is
@@ -680,21 +867,36 @@ simple-log
 # Examples:
 # denied-peer-ip=83.166.64.0-83.166.95.255
 # allowed-peer-ip=83.166.68.45
+<% @denied_peer_ip.each do | i | -%>
+denied-peer-ip=<%= i %>
+<% end -%>
+<% @allowed_peer_ip.each do | i | -%>
+allowed-peer-ip=<%= i %>
+<% end -%>
 
 # File name to store the pid of the process.
 # Default is /var/run/turnserver.pid (if superuser account is used) or
 # /var/tmp/turnserver.pid .
 #
 #pidfile="/var/run/turnserver.pid"
+<% if @pidfile -%>
+pidfile=<%= @pidfile %>
+<% end -%>
 
 # Require authentication of the STUN Binding request.
 # By default, the clients are allowed anonymous access to the STUN Binding functionality.
 #
 #secure-stun
+<% if @secure_stun -%>
+secure-stun
+<% end -%>
 
 # Mobility with ICE (MICE) specs support.
 #
 #mobility
+<% if @mobility -%>
+mobility
+<% end -%>
 
 # Allocate Address Family according (DEPRECATED and will be removed in favour of allocation-default-address-family)
 # If enabled then TURN server allocates address family according  the TURN
@@ -703,6 +905,9 @@ simple-log
 # !!Warning: Enabling this option breaks RFC6156 section-4.2 (violates use default IPv4)!!
 #
 #keep-address-family
+<% if @keep_address_family -%>
+keep-address-family
+<% end -%>
 
 # TURN server allocates address family according TURN client requested address family.
 # If address family not requested explicitly by the client, then it falls back to this default.
@@ -712,33 +917,50 @@ simple-log
 # "keep" sets the allocation default address family according to 
 # the TURN client allocation request connection address family.
 #allocation-default-address-family="ipv4"
-#allocation-default-address-family="ipv4"
+<% if @allocation_default_address_family -%>
+allocation-default-address-family=<%= @allocation_default_address_family %>
+<% end -%>
 
 
 # User name to run the process. After the initialization, the turnserver process
 # will attempt to change the current user ID to that user.
 #
 #proc-user=<user-name>
+<% if @proc_user -%>
+proc-user=<%= @proc_user %>
+<% end -%>
 
 # Group name to run the process. After the initialization, the turnserver process
 # will attempt to change the current group ID to that group.
 #
 #proc-group=<group-name>
+<% if @proc_group -%>
+proc-user=<%= @proc_group %>
+<% end -%>
 
 # Turn OFF the CLI support.
 # By default it is always ON.
 # See also options cli-ip and cli-port.
 #
 #no-cli
+<% if @no_cli -%>
+no-cli
+<% end -%>
 
 #Local system IP address to be used for CLI server endpoint. Default value
 # is 127.0.0.1.
 #
 #cli-ip=127.0.0.1
+<% if @cli_ip -%>
+cli-ip=<%= @cli_ip %>
+<% end -%>
 
 # CLI server port. Default is 5766.
 #
 #cli-port=5766
+<% if @cli_port -%>
+cli-port=<%= @cli_port %>
+<% end -%>
 
 # CLI access password. Default is empty (no password).
 # For the security reasons, it is recommended that you use the encrypted
@@ -751,29 +973,47 @@ simple-log
 # Or unsecure form for the same password:
 #
 #cli-password=qwerty
+<% if @cli_password -%>
+cli-password=<%= @cli_password %>
+<% end -%>
 
 # Enable Web-admin support on https. By default it is Disabled.
 # If it is enabled it also enables a http a simple static banner page
 # with a small reminder that the admin page is available only on https.
 #
 #web-admin
+<% if @web_admin -%>
+web-admin
+<% end -%>
 
 # Local system IP address to be used for Web-admin server endpoint. Default value is 127.0.0.1.
 #
 #web-admin-ip=127.0.0.1
+<% if @web_admin_ip -%>
+web_admin_ip=<%= @web_admin_ip %>
+<% end -%>
 
 # Web-admin server port. Default is 8080.
 #
 #web-admin-port=8080
+<% if @web_admin_port -%>
+web_admin_port=<%= @web_admin_port %>
+<% end -%>
 
 # Web-admin server listen on STUN/TURN worker threads
 # By default it is disabled for security resons! (Not recommended in any production environment!)
 #
 #web-admin-listen-on-workers
+<% if @web_admin_listen_on_workers -%>
+web-admin-listen-on-workers
+<% end -%>
 
-#acme-redirect=http://redirectserver/.well-known/acme-challenge/
 # Redirect ACME, i.e. HTTP GET requests matching '^/.well-known/acme-challenge/(.*)' to '<URL>$1'.
 # Default is '', i.e. no special handling for such requests.
+#acme-redirect=http://redirectserver/.well-known/acme-challenge/
+<% if @acme_redirect -%>
+acme-redirect=<%= @acme_redirect %>
+<% end -%>
 
 # Server relay. NON-STANDARD AND DANGEROUS OPTION.
 # Only for those applications when you want to run
@@ -782,11 +1022,17 @@ simple-log
 # the packets incoming to the relay endpoints.
 #
 #server-relay
+<% if @server_relay -%>
+server-relay
+<% end -%>
 
 # Maximum number of output sessions in ps CLI command.
 # This value can be changed on-the-fly in CLI. The default value is 256.
 #
 #cli-max-output-sessions
+<% if @cli_max_output_sessions -%>
+cli-max-output-sessions=<%= @cli_max_output_sessions -%>
+<% end -%>
 
 # Set network engine type for the process (for internal purposes).
 #
@@ -795,8 +1041,17 @@ simple-log
 # Do not allow an TLS/DTLS version of protocol
 #
 #no-tlsv1
+<% if @no_tlsv1 -%>
+no-tlsv1
+<% end -%>
 #no-tlsv1_1
+<% if @no_tlsv1_1 -%>
+no-tlsv1_1
+<% end -%>
 #no-tlsv1_2
+<% if @no_tlsv1_2 -%>
+no-tlsv1_2
+<% end -%>
 
 # Disable RFC5780 (NAT behavior discovery).
 #
@@ -809,7 +1064,9 @@ simple-log
 # Strongly encouraged to use this option to decrease gain factor in STUN
 # binding responses.
 #
+<% if @no_rfc5780 -%>
 no-rfc5780
+<% end -%>
 
 # Disable handling old STUN Binding requests and disable MAPPED-ADDRESS
 # attribute in binding response (use only the XOR-MAPPED-ADDRESS).
@@ -817,11 +1074,15 @@ no-rfc5780
 # Strongly encouraged to use this option to decrease gain factor in STUN
 # binding responses.
 #
+<% if @no_stun_backward_compatibility -%>
 no-stun-backward-compatibility
+<% end -%>
 
 # Only send RESPONSE-ORIGIN attribute in binding response if RFC5780 is enabled.
 #
 # Strongly encouraged to use this option to decrease gain factor in STUN
 # binding responses.
 #
+<% if @response_origin_only_with_rfc5780 -%>
 response-origin-only-with-rfc5780
+<% end -%>

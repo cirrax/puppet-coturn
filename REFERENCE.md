@@ -24,19 +24,110 @@ The following parameters are available in the `coturn` class:
 * [`owner`](#-coturn--owner)
 * [`group`](#-coturn--group)
 * [`package_name`](#-coturn--package_name)
-* [`use_auth_secret`](#-coturn--use_auth_secret)
-* [`no_stdout_log`](#-coturn--no_stdout_log)
-* [`syslog`](#-coturn--syslog)
-* [`simple_log`](#-coturn--simple_log)
+* [`listening_device`](#-coturn--listening_device)
+* [`listening_port`](#-coturn--listening_port)
+* [`tls_listening_port`](#-coturn--tls_listening_port)
+* [`alt_listening_port`](#-coturn--alt_listening_port)
+* [`alt_tls_listening_port`](#-coturn--alt_tls_listening_port)
+* [`tcp_proxy_port`](#-coturn--tcp_proxy_port)
+* [`listening_ip`](#-coturn--listening_ip)
+* [`aux_server`](#-coturn--aux_server)
+* [`udp_self_balance`](#-coturn--udp_self_balance)
+* [`relay_device`](#-coturn--relay_device)
+* [`relay_ip`](#-coturn--relay_ip)
+* [`external_ip`](#-coturn--external_ip)
+* [`min_port`](#-coturn--min_port)
+* [`max_port`](#-coturn--max_port)
 * [`verbose`](#-coturn--verbose)
 * [`extra_verbose`](#-coturn--extra_verbose)
-* [`log_file`](#-coturn--log_file)
+* [`fingerprint`](#-coturn--fingerprint)
+* [`lt_cred_mech`](#-coturn--lt_cred_mech)
+* [`no_auth`](#-coturn--no_auth)
+* [`prometheus`](#-coturn--prometheus)
+* [`use_auth_secret`](#-coturn--use_auth_secret)
 * [`static_auth_secret`](#-coturn--static_auth_secret)
+* [`server_name`](#-coturn--server_name)
+* [`oauth`](#-coturn--oauth)
+* [`user`](#-coturn--user)
+* [`userdb`](#-coturn--userdb)
+* [`psql_userdb`](#-coturn--psql_userdb)
+* [`mysql_userdb`](#-coturn--mysql_userdb)
+* [`secret_key_file`](#-coturn--secret_key_file)
+* [`mongo_userdb`](#-coturn--mongo_userdb)
+* [`redis_userdb`](#-coturn--redis_userdb)
+* [`redis_statsdb`](#-coturn--redis_statsdb)
 * [`realm`](#-coturn--realm)
+* [`check_origin_consistency`](#-coturn--check_origin_consistency)
+* [`user_quota`](#-coturn--user_quota)
+* [`total_quota`](#-coturn--total_quota)
+* [`max_bps`](#-coturn--max_bps)
+* [`bps_capacity`](#-coturn--bps_capacity)
+* [`no_udp`](#-coturn--no_udp)
+* [`no_tcp`](#-coturn--no_tcp)
+* [`no_tls`](#-coturn--no_tls)
+* [`no_dtls`](#-coturn--no_dtls)
+* [`no_udp_relay`](#-coturn--no_udp_relay)
+* [`no_tcp_relay`](#-coturn--no_tcp_relay)
+* [`stale_nonce`](#-coturn--stale_nonce)
+* [`max_allocate_lifetime`](#-coturn--max_allocate_lifetime)
+* [`channel_lifetime`](#-coturn--channel_lifetime)
+* [`permission_lifetime`](#-coturn--permission_lifetime)
+* [`cert`](#-coturn--cert)
+* [`pkey`](#-coturn--pkey)
+* [`pkey_pwd`](#-coturn--pkey_pwd)
+* [`cipher_list`](#-coturn--cipher_list)
+* [`ca_file`](#-coturn--ca_file)
+* [`ec_curve_name`](#-coturn--ec_curve_name)
+* [`dh566`](#-coturn--dh566)
+* [`dh1066`](#-coturn--dh1066)
+* [`dh_file`](#-coturn--dh_file)
+* [`no_stdout_log`](#-coturn--no_stdout_log)
+* [`syslog`](#-coturn--syslog)
+* [`syslog_facility`](#-coturn--syslog_facility)
+* [`simple_log`](#-coturn--simple_log)
+* [`log_file`](#-coturn--log_file)
+* [`new_log_timestamp`](#-coturn--new_log_timestamp)
+* [`new_log_timestamp_format`](#-coturn--new_log_timestamp_format)
+* [`log_binding`](#-coturn--log_binding)
+* [`alternate_server`](#-coturn--alternate_server)
+* [`tls_alternate_server`](#-coturn--tls_alternate_server)
+* [`stun_only`](#-coturn--stun_only)
+* [`non_software_attribute`](#-coturn--non_software_attribute)
+* [`no_stun`](#-coturn--no_stun)
+* [`rest_api_separator`](#-coturn--rest_api_separator)
+* [`allow_loopback_peers`](#-coturn--allow_loopback_peers)
+* [`no_multicast_peers`](#-coturn--no_multicast_peers)
+* [`max_allocate_timeout`](#-coturn--max_allocate_timeout)
+* [`allowed_peer_ip`](#-coturn--allowed_peer_ip)
+* [`denied_peer_ip`](#-coturn--denied_peer_ip)
+* [`pidfile`](#-coturn--pidfile)
+* [`secure_stun`](#-coturn--secure_stun)
+* [`mobility`](#-coturn--mobility)
+* [`keep_address_family`](#-coturn--keep_address_family)
+* [`allocation_default_address_family`](#-coturn--allocation_default_address_family)
+* [`proc_user`](#-coturn--proc_user)
+* [`proc_group`](#-coturn--proc_group)
+* [`no_cli`](#-coturn--no_cli)
+* [`cli_ip`](#-coturn--cli_ip)
+* [`cli_port`](#-coturn--cli_port)
+* [`cli_password`](#-coturn--cli_password)
+* [`web_admin`](#-coturn--web_admin)
+* [`web_admin_ip`](#-coturn--web_admin_ip)
+* [`web_admin_port`](#-coturn--web_admin_port)
+* [`web_admin_listen_on_workers`](#-coturn--web_admin_listen_on_workers)
+* [`acme_redirect`](#-coturn--acme_redirect)
+* [`server_relay`](#-coturn--server_relay)
+* [`cli_max_output_sessions`](#-coturn--cli_max_output_sessions)
+* [`no_tlsv1`](#-coturn--no_tlsv1)
+* [`no_tlsv1_1`](#-coturn--no_tlsv1_1)
+* [`no_tlsv1_2`](#-coturn--no_tlsv1_2)
+* [`no_rfc5780`](#-coturn--no_rfc5780)
+* [`no_stun_backwards_compatibility`](#-coturn--no_stun_backwards_compatibility)
+* [`response_origin_only_with_rfc5780`](#-coturn--response_origin_only_with_rfc5780)
 
 ##### <a name="-coturn--config_file"></a>`config_file`
 
-Data type: `String`
+Data type: `Stdlib::Absolutepath`
 
 the coturn configuration file
 
@@ -74,37 +165,119 @@ package to install
 
 Default value: `'coturn'`
 
-##### <a name="-coturn--use_auth_secret"></a>`use_auth_secret`
+##### <a name="-coturn--listening_device"></a>`listening_device`
+
+Data type: `Optional[String[1]]`
+
+Listener interface device (optional, Linux only)
+(not recomended)
+
+Default value: `undef`
+
+##### <a name="-coturn--listening_port"></a>`listening_port`
+
+Data type: `Optional[Integer]`
+
+TURN listener port for UDP and TCP (Default: 3478)
+
+Default value: `undef`
+
+##### <a name="-coturn--tls_listening_port"></a>`tls_listening_port`
+
+Data type: `Optional[Integer]`
+
+TURN listener port for TLS (Default: 5349).
+
+Default value: `undef`
+
+##### <a name="-coturn--alt_listening_port"></a>`alt_listening_port`
+
+Data type: `Optional[Integer]`
+
+Alternative listening port for UDP and TCP listeners
+
+Default value: `undef`
+
+##### <a name="-coturn--alt_tls_listening_port"></a>`alt_tls_listening_port`
+
+Data type: `Optional[Integer]`
+
+Alternative listening port for TLS and DTLS protocols
+
+Default value: `undef`
+
+##### <a name="-coturn--tcp_proxy_port"></a>`tcp_proxy_port`
+
+Data type: `Optional[Integer]`
+
+TCP reverse proxy in front of the STUN server
+
+Default value: `undef`
+
+##### <a name="-coturn--listening_ip"></a>`listening_ip`
+
+Data type: `Array[Stdlib::IP::Address]`
+
+listener IP address of relay server.
+Multiple listeners can be specified
+
+Default value: `[]`
+
+##### <a name="-coturn--aux_server"></a>`aux_server`
+
+Data type: `Array[String[1]]`
+
+Auxiliary STUN/TURN server listening endpoint
+
+Default value: `[]`
+
+##### <a name="-coturn--udp_self_balance"></a>`udp_self_balance`
 
 Data type: `Boolean`
 
-enable use-auth-secret
+Automatically balance UDP traffic over auxiliary servers
 
 Default value: `false`
 
-##### <a name="-coturn--no_stdout_log"></a>`no_stdout_log`
+##### <a name="-coturn--relay_device"></a>`relay_device`
 
-Data type: `Boolean`
+Data type: `Optional[String[1]]`
 
-Flag to prevent stdout log messages
+Relay interface device for relay sockets
 
-Default value: `false`
+Default value: `undef`
 
-##### <a name="-coturn--syslog"></a>`syslog`
+##### <a name="-coturn--relay_ip"></a>`relay_ip`
 
-Data type: `Boolean`
+Data type: `Array[Stdlib::IP::Address]`
 
-redirect all log output into system log (syslog)
+Relay address
 
-Default value: `false`
+Default value: `[]`
 
-##### <a name="-coturn--simple_log"></a>`simple_log`
+##### <a name="-coturn--external_ip"></a>`external_ip`
 
-Data type: `Boolean`
+Data type: `Array[String[1]]`
 
-if true, no log file rollover will be used
+TURN Server public/private address mapping
 
-Default value: `false`
+Default value: `[]`
+
+##### <a name="-coturn--min_port"></a>`min_port`
+
+Data type: `Optional[Integer]`
+
+Lower bound of the UDP relay endpoints
+
+Default value: `undef`
+
+##### <a name="-coturn--max_port"></a>`max_port`
+
+Data type: `Optional[Integer]`
+
+Upper bound of the UDP relay endpoints
+
+Default value: `undef`
 
 ##### <a name="-coturn--verbose"></a>`verbose`
 
@@ -122,29 +295,679 @@ if true, enables Verbose mode (extra verbose)
 
 Default value: `false`
 
-##### <a name="-coturn--log_file"></a>`log_file`
+##### <a name="-coturn--fingerprint"></a>`fingerprint`
 
-Data type: `Optional[String]`
+Data type: `Boolean`
 
-Option to set the log file path
+use fingerprints in the TURN messages
 
-Default value: `undef`
+Default value: `false`
+
+##### <a name="-coturn--lt_cred_mech"></a>`lt_cred_mech`
+
+Data type: `Boolean`
+
+use long-term credential mechanism
+
+Default value: `false`
+
+##### <a name="-coturn--no_auth"></a>`no_auth`
+
+Data type: `Boolean`
+
+no auth
+
+Default value: `false`
+
+##### <a name="-coturn--prometheus"></a>`prometheus`
+
+Data type: `Boolean`
+
+Enable prometheus exporter
+
+Default value: `false`
+
+##### <a name="-coturn--use_auth_secret"></a>`use_auth_secret`
+
+Data type: `Boolean`
+
+enable use-auth-secret
+
+Default value: `false`
 
 ##### <a name="-coturn--static_auth_secret"></a>`static_auth_secret`
 
-Data type: `Optional[String]`
+Data type: `Optional[String[1]]`
 
 'Static' authentication secret value
 
 Default value: `undef`
 
+##### <a name="-coturn--server_name"></a>`server_name`
+
+Data type: `Optional[String[1]]`
+
+Server name used for the oAuth authentication purposes.
+
+Default value: `undef`
+
+##### <a name="-coturn--oauth"></a>`oauth`
+
+Data type: `Boolean`
+
+allow oAuth authentication
+
+Default value: `false`
+
+##### <a name="-coturn--user"></a>`user`
+
+Data type: `Array[String[1]]`
+
+static user accounts for the long term credentials mechanism
+
+Default value: `[]`
+
+##### <a name="-coturn--userdb"></a>`userdb`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+SQLite database file name
+
+Default value: `undef`
+
+##### <a name="-coturn--psql_userdb"></a>`psql_userdb`
+
+Data type: `Optional[String[1]]`
+
+PostgreSQL database connection string
+
+Default value: `undef`
+
+##### <a name="-coturn--mysql_userdb"></a>`mysql_userdb`
+
+Data type: `Optional[String[1]]`
+
+MySQL database connection string
+
+Default value: `undef`
+
+##### <a name="-coturn--secret_key_file"></a>`secret_key_file`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+MySQL password encryption secret key
+
+Default value: `undef`
+
+##### <a name="-coturn--mongo_userdb"></a>`mongo_userdb`
+
+Data type: `Optional[String[1]]`
+
+MongoDB database connection string
+
+Default value: `undef`
+
+##### <a name="-coturn--redis_userdb"></a>`redis_userdb`
+
+Data type: `Optional[String[1]]`
+
+Redis database connection string
+
+Default value: `undef`
+
+##### <a name="-coturn--redis_statsdb"></a>`redis_statsdb`
+
+Data type: `Optional[String[1]]`
+
+Redis status and statistics database connection string
+
+Default value: `undef`
+
 ##### <a name="-coturn--realm"></a>`realm`
 
-Data type: `Optional[String]`
+Data type: `Optional[String[1]]`
 
 the default realm to be used
 
 Default value: `undef`
+
+##### <a name="-coturn--check_origin_consistency"></a>`check_origin_consistency`
+
+Data type: `Boolean`
+
+set the origin consistency  check
+
+Default value: `false`
+
+##### <a name="-coturn--user_quota"></a>`user_quota`
+
+Data type: `Optional[Integer]`
+
+Per-user allocation quota
+
+Default value: `undef`
+
+##### <a name="-coturn--total_quota"></a>`total_quota`
+
+Data type: `Optional[Integer]`
+
+Total allocation quota
+
+Default value: `undef`
+
+##### <a name="-coturn--max_bps"></a>`max_bps`
+
+Data type: `Optional[Integer]`
+
+Max bytes-per-second bandwidth a TURN session is
+allowed to handle
+
+Default value: `undef`
+
+##### <a name="-coturn--bps_capacity"></a>`bps_capacity`
+
+Data type: `Optional[Integer]`
+
+Maximum server capacity
+
+Default value: `undef`
+
+##### <a name="-coturn--no_udp"></a>`no_udp`
+
+Data type: `Boolean`
+
+no UDP client listener
+
+Default value: `false`
+
+##### <a name="-coturn--no_tcp"></a>`no_tcp`
+
+Data type: `Boolean`
+
+no TCP client listener
+
+Default value: `false`
+
+##### <a name="-coturn--no_tls"></a>`no_tls`
+
+Data type: `Boolean`
+
+no TLS client listener
+
+Default value: `false`
+
+##### <a name="-coturn--no_dtls"></a>`no_dtls`
+
+Data type: `Boolean`
+
+no DTLS client listener
+
+Default value: `false`
+
+##### <a name="-coturn--no_udp_relay"></a>`no_udp_relay`
+
+Data type: `Boolean`
+
+no UDP relay endpoints are allowed
+
+Default value: `false`
+
+##### <a name="-coturn--no_tcp_relay"></a>`no_tcp_relay`
+
+Data type: `Boolean`
+
+no TCP relay endpoints are allowed
+
+Default value: `false`
+
+##### <a name="-coturn--stale_nonce"></a>`stale_nonce`
+
+Data type: `Optional[Integer]`
+
+limited lifetime for nonce
+
+Default value: `undef`
+
+##### <a name="-coturn--max_allocate_lifetime"></a>`max_allocate_lifetime`
+
+Data type: `Optional[Integer]`
+
+maximum allocation lifetime
+
+Default value: `undef`
+
+##### <a name="-coturn--channel_lifetime"></a>`channel_lifetime`
+
+Data type: `Optional[Integer]`
+
+maximum channel lifetime
+
+Default value: `undef`
+
+##### <a name="-coturn--permission_lifetime"></a>`permission_lifetime`
+
+Data type: `Optional[Integer]`
+
+maximum permission lifetime
+
+Default value: `undef`
+
+##### <a name="-coturn--cert"></a>`cert`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+Certificate file
+
+Default value: `undef`
+
+##### <a name="-coturn--pkey"></a>`pkey`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+Private key file
+
+Default value: `undef`
+
+##### <a name="-coturn--pkey_pwd"></a>`pkey_pwd`
+
+Data type: `Optional[String[1]]`
+
+Private key file password
+
+Default value: `undef`
+
+##### <a name="-coturn--cipher_list"></a>`cipher_list`
+
+Data type: `Optional[String[1]]`
+
+Allowed OpenSSL ciphers
+
+Default value: `undef`
+
+##### <a name="-coturn--ca_file"></a>`ca_file`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+CA file in OpenSSL format
+
+Default value: `undef`
+
+##### <a name="-coturn--ec_curve_name"></a>`ec_curve_name`
+
+Data type: `Optional[String[1]]`
+
+Curve name for EC ciphers
+
+Default value: `undef`
+
+##### <a name="-coturn--dh566"></a>`dh566`
+
+Data type: `Boolean`
+
+Use 566 bits predefined DH TLS key
+
+Default value: `false`
+
+##### <a name="-coturn--dh1066"></a>`dh1066`
+
+Data type: `Boolean`
+
+Use 1066 bits predefined DH TLS key
+
+Default value: `false`
+
+##### <a name="-coturn--dh_file"></a>`dh_file`
+
+Data type: `Optional[String[1]]`
+
+Use custom DH TLS key, stored in PEM format in the file
+
+Default value: `undef`
+
+##### <a name="-coturn--no_stdout_log"></a>`no_stdout_log`
+
+Data type: `Boolean`
+
+Flag to prevent stdout log messages
+
+Default value: `false`
+
+##### <a name="-coturn--syslog"></a>`syslog`
+
+Data type: `Boolean`
+
+redirect all log output into system log (syslog)
+
+Default value: `false`
+
+##### <a name="-coturn--syslog_facility"></a>`syslog_facility`
+
+Data type: `Optional[String[1]]`
+
+Set syslog facility
+
+Default value: `undef`
+
+##### <a name="-coturn--simple_log"></a>`simple_log`
+
+Data type: `Boolean`
+
+if true, no log file rollover will be used
+
+Default value: `false`
+
+##### <a name="-coturn--log_file"></a>`log_file`
+
+Data type: `Optional[String[1]]`
+
+Option to set the log file path
+
+Default value: `undef`
+
+##### <a name="-coturn--new_log_timestamp"></a>`new_log_timestamp`
+
+Data type: `Boolean`
+
+Enable full ISO-8601 timestamp in all logs
+
+Default value: `false`
+
+##### <a name="-coturn--new_log_timestamp_format"></a>`new_log_timestamp_format`
+
+Data type: `Optional[String[1]]`
+
+Set timestamp format
+
+Default value: `undef`
+
+##### <a name="-coturn--log_binding"></a>`log_binding`
+
+Data type: `Boolean`
+
+Disabled by default binding logging in verbose log mode
+
+Default value: `false`
+
+##### <a name="-coturn--alternate_server"></a>`alternate_server`
+
+Data type: `Array[String[1]]`
+
+Option to set the "redirection" mode
+
+Default value: `[]`
+
+##### <a name="-coturn--tls_alternate_server"></a>`tls_alternate_server`
+
+Data type: `Array[String[1]]`
+
+Option to set alternative server for TLS & DTLS services
+
+Default value: `[]`
+
+##### <a name="-coturn--stun_only"></a>`stun_only`
+
+Data type: `Boolean`
+
+suppress TURN functionality
+
+Default value: `false`
+
+##### <a name="-coturn--non_software_attribute"></a>`non_software_attribute`
+
+Data type: `Boolean`
+
+hide software version
+
+Default value: `false`
+
+##### <a name="-coturn--no_stun"></a>`no_stun`
+
+Data type: `Boolean`
+
+suppress STUN functionality
+
+Default value: `false`
+
+##### <a name="-coturn--rest_api_separator"></a>`rest_api_separator`
+
+Data type: `Optional[String[1]]`
+
+timestamp/username separator symbol
+
+Default value: `undef`
+
+##### <a name="-coturn--allow_loopback_peers"></a>`allow_loopback_peers`
+
+Data type: `Boolean`
+
+allow peers on the loopback addresses
+
+Default value: `false`
+
+##### <a name="-coturn--no_multicast_peers"></a>`no_multicast_peers`
+
+Data type: `Boolean`
+
+disallow peers on well-known broadcast addresses
+
+Default value: `false`
+
+##### <a name="-coturn--max_allocate_timeout"></a>`max_allocate_timeout`
+
+Data type: `Optional[Integer]`
+
+set the max time, in seconds
+
+Default value: `undef`
+
+##### <a name="-coturn--allowed_peer_ip"></a>`allowed_peer_ip`
+
+Data type: `Array[String[1]]`
+
+allow specific ip addresses or ranges
+
+Default value: `[]`
+
+##### <a name="-coturn--denied_peer_ip"></a>`denied_peer_ip`
+
+Data type: `Array[String[1]]`
+
+ban specific ip addresses or ranges
+
+Default value: `[]`
+
+##### <a name="-coturn--pidfile"></a>`pidfile`
+
+Data type: `Optional[Stdlib::Absolutepath]`
+
+File name to store the pid of the process
+
+Default value: `undef`
+
+##### <a name="-coturn--secure_stun"></a>`secure_stun`
+
+Data type: `Boolean`
+
+Require authentication of the STUN Binding request
+
+Default value: `false`
+
+##### <a name="-coturn--mobility"></a>`mobility`
+
+Data type: `Boolean`
+
+Mobility with ICE (MICE) specs support
+
+Default value: `false`
+
+##### <a name="-coturn--keep_address_family"></a>`keep_address_family`
+
+Data type: `Boolean`
+
+Allocate Address Family according
+
+Default value: `false`
+
+##### <a name="-coturn--allocation_default_address_family"></a>`allocation_default_address_family`
+
+Data type: `Optional[Enum['ipv4', 'ipv6', 'keep']]`
+
+TURN server allocates address family to use.
+
+Default value: `undef`
+
+##### <a name="-coturn--proc_user"></a>`proc_user`
+
+Data type: `Optional[String[1]]`
+
+User name to run the process
+
+Default value: `undef`
+
+##### <a name="-coturn--proc_group"></a>`proc_group`
+
+Data type: `Optional[String[1]]`
+
+Group name to run the process
+
+Default value: `undef`
+
+##### <a name="-coturn--no_cli"></a>`no_cli`
+
+Data type: `Boolean`
+
+Turn OFF the CLI support
+
+Default value: `false`
+
+##### <a name="-coturn--cli_ip"></a>`cli_ip`
+
+Data type: `Optional[Stdlib::IP::Address]`
+
+Local system IP address to be used for CLI server endpoint
+
+Default value: `undef`
+
+##### <a name="-coturn--cli_port"></a>`cli_port`
+
+Data type: `Optional[Integer]`
+
+CLI server port
+
+Default value: `undef`
+
+##### <a name="-coturn--cli_password"></a>`cli_password`
+
+Data type: `Optional[String[1]]`
+
+CLI access password
+
+Default value: `undef`
+
+##### <a name="-coturn--web_admin"></a>`web_admin`
+
+Data type: `Boolean`
+
+Enable Web-admin support on https
+
+Default value: `false`
+
+##### <a name="-coturn--web_admin_ip"></a>`web_admin_ip`
+
+Data type: `Optional[Stdlib::IP::Address]`
+
+Local system IP address to be used for Web-admin server endpoint
+
+Default value: `undef`
+
+##### <a name="-coturn--web_admin_port"></a>`web_admin_port`
+
+Data type: `Optional[Integer]`
+
+Web-admin server port
+
+Default value: `undef`
+
+##### <a name="-coturn--web_admin_listen_on_workers"></a>`web_admin_listen_on_workers`
+
+Data type: `Boolean`
+
+Web-admin server listen on STUN/TURN worker threads
+
+Default value: `false`
+
+##### <a name="-coturn--acme_redirect"></a>`acme_redirect`
+
+Data type: `Optional[String[1]]`
+
+Redirect ACME
+
+Default value: `undef`
+
+##### <a name="-coturn--server_relay"></a>`server_relay`
+
+Data type: `Boolean`
+
+Server relay. NON-STANDARD AND DANGEROUS OPTION.
+
+Default value: `false`
+
+##### <a name="-coturn--cli_max_output_sessions"></a>`cli_max_output_sessions`
+
+Data type: `Optional[Integer]`
+
+Maximum number of output sessions in ps CLI command
+
+Default value: `undef`
+
+##### <a name="-coturn--no_tlsv1"></a>`no_tlsv1`
+
+Data type: `Boolean`
+
+Do not allow tlsv1
+
+Default value: `false`
+
+##### <a name="-coturn--no_tlsv1_1"></a>`no_tlsv1_1`
+
+Data type: `Boolean`
+
+Do not allow tlsv1_1
+
+Default value: `false`
+
+##### <a name="-coturn--no_tlsv1_2"></a>`no_tlsv1_2`
+
+Data type: `Boolean`
+
+Do not allow tlsv1_2
+
+Default value: `false`
+
+##### <a name="-coturn--no_rfc5780"></a>`no_rfc5780`
+
+Data type: `Boolean`
+
+Disable RFC5780 (NAT behavior discovery)
+
+Default value: `true`
+
+##### <a name="-coturn--no_stun_backwards_compatibility"></a>`no_stun_backwards_compatibility`
+
+Data type: `Boolean`
+
+Disable handling old STUN Binding requests
+
+Default value: `true`
+
+##### <a name="-coturn--response_origin_only_with_rfc5780"></a>`response_origin_only_with_rfc5780`
+
+Data type: `Boolean`
+
+Only send RESPONSE-ORIGIN attribute in binding response
+if RFC5780 is enabled
+
+Default value: `true`
 
 ### <a name="coturn--service"></a>`coturn::service`
 

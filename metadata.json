@@ -32,11 +32,8 @@
   ],
   "requirements": [
     {
-      "name": "puppet",
+      "name": "openvox",
       "version_requirement": ">= 4.10.0 < 8.0.0"
     }
-  ],
-  "pdk-version": "2.6.1",
-  "template-url": "pdk-default#2.7.1",
-  "template-ref": "tags/2.7.1-0-g9a16c87"
+  ]
 }

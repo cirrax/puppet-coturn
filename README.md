@@ -1,10 +1,5 @@
 # coturn puppet module
 
-[![Build Status](https://travis-ci.org/cirrax/puppet-coturn.svg?branch=master)](https://travis-ci.org/cirrax/puppet-coturn)
-[![Puppet Forge](https://img.shields.io/puppetforge/v/cirrax/coturn.svg?style=flat-square)](https://forge.puppetlabs.com/cirrax/coturn)
-[![Puppet Forge](https://img.shields.io/puppetforge/dt/cirrax/coturn.svg?style=flat-square)](https://forge.puppet.com/cirrax/coturn)
-[![Puppet Forge](https://img.shields.io/puppetforge/e/cirrax/coturn.svg?style=flat-square)](https://forge.puppet.com/cirrax/coturn)
-[![Puppet Forge](https://img.shields.io/puppetforge/f/cirrax/coturn.svg?style=flat-square)](https://forge.puppet.com/cirrax/coturn)
 
 #### Table of Contents
 

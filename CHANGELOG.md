@@ -1,7 +1,11 @@
 # Changelog cirrax-coturn
 
 
-## Version: 1.1.0 (13 September 2025)
+## Version: 1.1.1 (7 October 2025)
+* fix tls-listening-port ([1568591](https://github.com/cirrax/puppet-coturn/commit/1568591efdfb0532ea7fa44451f0d0c1ac756586))
+
+## Version: v1.1.0 (13 September 2025)
+* Release v1.1.0 ([2017a12](https://github.com/cirrax/puppet-coturn/commit/2017a1280f9ba7afe941a6498506a6aec8f39327))
 * update metadata ([e94ac8d](https://github.com/cirrax/puppet-coturn/commit/e94ac8d073e2afd49c1e2187626d3f6ae5078779))
 * add parameters to configure turnserver ([de97301](https://github.com/cirrax/puppet-coturn/commit/de9730108c91695e6ef1cbb2dfdbb642ba36d64b))
 * update comments in config template ([c1577c4](https://github.com/cirrax/puppet-coturn/commit/c1577c40df7ad7712099937485d8c82a4429ab27))
